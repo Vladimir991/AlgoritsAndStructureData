@@ -1,39 +1,39 @@
 package mergeSort;
 
 public class DArray {
-    private long[] theArray; //ссылка на массив theArray
-    private int nElems; //Количество элементов данных
+    private long[] theArray; //СЃСЃС‹Р»РєР° РЅР° РјР°СЃСЃРёРІ theArray
+    private int nElems; //РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РґР°РЅРЅС‹С…
 
-    public DArray(int max){ //конструктор
-        theArray = new long[max]; //создание массива
+    public DArray(int max){ //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+        theArray = new long[max]; //СЃРѕР·РґР°РЅРёРµ РјР°СЃСЃРёРІР°
         nElems = 0;
     }
-    public void insert(long value){ //занесение элемента в массив
-        theArray[nElems] = value; // вставка элемента
-        nElems++; //увеличение размера
+    public void insert(long value){ //Р·Р°РЅРµСЃРµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ РјР°СЃСЃРёРІ
+        theArray[nElems] = value; // РІСЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р°
+        nElems++; //СѓРІРµР»РёС‡РµРЅРёРµ СЂР°Р·РјРµСЂР°
     }
-    public void display(){ //вывод содержимого массива
-        for (int j = 0; j < nElems; j++) // для каждого элемента
-            System.out.print(theArray[j] + " "); //вывод
+    public void display(){ //РІС‹РІРѕРґ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РјР°СЃСЃРёРІР°
+        for (int j = 0; j < nElems; j++) // РґР»СЏ РєР°Р¶РґРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
+            System.out.print(theArray[j] + " "); //РІС‹РІРѕРґ
         System.out.println("");
     }
-    public void mergeSort(){ // вызывается из main()
+    public void mergeSort(){ // РІС‹Р·С‹РІР°РµС‚СЃСЏ РёР· main()
         long[] workSpace = new long[nElems];
         recMergeSort(workSpace, 0, nElems-1);
     }
     private void recMergeSort(long[] workSpace, int lowerBound, int upperBound){
         if (lowerBound != upperBound) {
-            int mid = (lowerBound + upperBound) / 2; // поиск середины
-            recMergeSort(workSpace, lowerBound, mid); // сортировка нижней половины
-            recMergeSort(workSpace, mid+1, upperBound); // сортировка верхней половины
-            merge(workSpace, lowerBound, mid+1, upperBound); // слияние
+            int mid = (lowerBound + upperBound) / 2; // РїРѕРёСЃРє СЃРµСЂРµРґРёРЅС‹
+            recMergeSort(workSpace, lowerBound, mid); // СЃРѕСЂС‚РёСЂРѕРІРєР° РЅРёР¶РЅРµР№ РїРѕР»РѕРІРёРЅС‹
+            recMergeSort(workSpace, mid+1, upperBound); // СЃРѕСЂС‚РёСЂРѕРІРєР° РІРµСЂС…РЅРµР№ РїРѕР»РѕРІРёРЅС‹
+            merge(workSpace, lowerBound, mid+1, upperBound); // СЃР»РёСЏРЅРёРµ
         }
     }
     private void merge(long[] workSpace, int lowPtr, int highPtr, int upperBound){
-        int j = 0; // индекс в рабочей области
+        int j = 0; // РёРЅРґРµРєСЃ РІ СЂР°Р±РѕС‡РµР№ РѕР±Р»Р°СЃС‚Рё
         int lowerBound = lowPtr;
         int mid = highPtr-1;
-        int n = upperBound-lowerBound+1; // количество элементов
+        int n = upperBound-lowerBound+1; // РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ
 
         while (lowPtr <= mid && highPtr <= upperBound)
             if (theArray[lowPtr] < theArray[highPtr])
